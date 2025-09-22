@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Penyimpanan Nama</title>
+</head>
+<body>
+  <h2>Masukkan Nama Anda</h2>
+  <input type="text" id="namaInput" placeholder="Nama Anda">
+  <button onclick="simpanNama()">Simpan</button>
+  <button onclick="hapusNama()">Hapus</button>
+
+  <h3>Nama Tersimpan:</h3>
+  <p id="namaTersimpan">Belum ada nama</p>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const nama = localStorage.getItem("namaPengguna");
+      if (nama) {
+        document.getElementById("namaTersimpan").textContent = nama;
+      }
+    });
+
+    function simpanNama() {
+      const nama = document.getElementById("namaInput").value;
+      localStorage.setItem("namaPengguna", nama);
+      document.getElementById("namaTersimpan").textContent = nama;
+    }
+
+    function hapusNama() {
+      localStorage.removeItem("namaPengguna");
+      document.getElementById("namaTersimpan").textContent = "Belum ada nama";
+    }
+  </script>
+</body>
+</html>
